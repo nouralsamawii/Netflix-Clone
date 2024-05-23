@@ -10,7 +10,16 @@ function Movie(props) {
                     <Card.Title>{props.item.title}</Card.Title>
                     <Card.Text>
                     </Card.Text>
-                    <Button variant="primary" onClick={() => { props.showModal(props.item) }}>Add to Favorite</Button>
+                    {
+                        props.isFavPage &&
+                        <>
+                            <Button variant="success" onClick={() => { props.updateItem(props.item) }} >Update</Button>{' '}
+                            <Button variant="danger" onClick={() => { props.deleteItem(props.item) }} >Delete</Button>{' '}
+                        </>
+                    }
+                    {
+                        !props.isFavPage && <Button variant="primary" onClick={() => { props.showModal(props.item) }}>Add to Favorite</Button>
+                    }
                 </Card.Body>
             </Card >
         </>
